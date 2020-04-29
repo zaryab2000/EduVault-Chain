@@ -2,11 +2,289 @@
 
 {% block scripts %}
 <script >
-  web3.eth.getAccounts(function get(err, res){            
-                  account=res[0]
-                  console.log(account)
-                });
 
+  const abi = [
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "addAttendance",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "name": "_compMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_mathMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_deMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_dsMarks",
+        "type": "uint256"
+      }
+    ],
+    "name": "addSubjectMarks",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "authorizeAdmin",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "name": "_batch",
+        "type": "string"
+      },
+      {
+        "name": "_stream",
+        "type": "string"
+      }
+    ],
+    "name": "newStudent",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAdmin",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getStuCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "scoresList",
+    "outputs": [
+      {
+        "name": "ComputerScience",
+        "type": "uint256"
+      },
+      {
+        "name": "Maths",
+        "type": "uint256"
+      },
+      {
+        "name": "DigitaElectronics",
+        "type": "uint256"
+      },
+      {
+        "name": "DataScience",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "studentList",
+    "outputs": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "student_id",
+        "type": "uint256"
+      },
+      {
+        "name": "batch",
+        "type": "string"
+      },
+      {
+        "name": "stream",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "uint256"
+      },
+      {
+        "name": "addedBy",
+        "type": "address"
+      },
+      {
+        "name": "attendanceCount",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "name": "ComputerScience",
+            "type": "uint256"
+          },
+          {
+            "name": "Maths",
+            "type": "uint256"
+          },
+          {
+            "name": "DigitaElectronics",
+            "type": "uint256"
+          },
+          {
+            "name": "DataScience",
+            "type": "uint256"
+          }
+        ],
+        "name": "subjects",
+        "type": "tuple"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }]
+
+  const address="0x8a7d901F07fB29721A3395727D313a9565647321"
+
+  contract = web3.eth.contract(abi).at(address)
+  contract.getStuCount.call((err,res)=>{
+    if(err){
+      return console.log(err)
+    }
+    else{
+      return console.log(res.toString())
+    }
+  })
+
+  function waitForReceipt(hash, cb) {
+    web3.eth.getTransactionReceipt(hash, function (err, receipt) {
+      if (err) {
+        error(err);
+      }
+      if (receipt !== null) {
+        // Transaction went through
+        if (cb) {
+          cb(receipt);
+        }
+      } else {
+        // Try again in 1 second
+        window.setTimeout(function () {
+          waitForReceipt(hash, cb);
+        }, 1000);
+      }
+    });
+  }
+function append(){
+    let name=$("#title").val();
+    let id=$("#subtitle").val();
+    let batch=$("#content").val();
+    let stream=$("#stream").val();
+
+web3.eth.getAccounts(function get(err, res){     
+        account=res[0]
+         transaction = 
+        ({
+          from: account,
+          "gas": 300000,
+          "chainId": 3,
+          'gasPrice': web3.toWei(4.1,'Gwei'),
+
+        })
+
+      contract.newStudent.sendTransaction(
+        name,
+        id,
+        batch,
+        stream,
+        transaction,
+        (error,result)=>{
+          if(error){
+            return console.log(error)
+          }
+          else{
+            waitForReceipt(result, function(){
+              console.log(result)
+            })
+          }
+        }
+      )
+    });
+  }
 </script>
   
 {% endblock scripts %}
@@ -17,24 +295,26 @@
   <div class="form-row">
     <div class="form-group col-md-6" style="margin-top: 20px;">
       <label for="inputEmail4">Student's Name</label>
-      <input id="title" name="title" class="form-control" placeholder="ADD A CATCHY TITLE HERE">
+      <input id="title" name="name" class="form-control" placeholder="ADD A CATCHY TITLE HERE">
     </div>
   </div>
   <div class="form-group" style="margin-top: 20px;">
     <label for="inputAddress">Student ID</label>
-    <textarea id="subtitle" name="subtitle" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
+    <textarea id="subtitle" name="id" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
   </div>
   <div class="form-group" style="margin-top: 20px;">
     <label for="inputAddress2">Batch</label>
-    <textarea id="content" name="content" type="text" class="form-control" id="inputAddress2" placeholder="START WRITING YOUR BLOG" rows="2" cols="1"></textarea> 
+    <textarea id="content" name="batch" type="text" class="form-control" id="inputAddress2" placeholder="START WRITING YOUR BLOG" rows="2" cols="1"></textarea> 
   </div>
   <div class="form-group" style="margin-top: 20px;">
     <label for="inputAddress">Stream Student</label>
-    <textarea id="subtitle" name="subtitle" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
+    <textarea id="stream" name="stream" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
   </div>
   
-  <div class="form-group" style="margin-top: 20px; text-align: center;">
-     <label>SELL THIS BLOG</label><input id="for_sale" name="for_sale" type="checkbox" checked data-toggle="toggle" data-on="YES" data-off="NO" data-size="md">
+ <div class="row col-lg-4 col-md-4 d-flex justify-content-center" style="margin-bottom: 50px; style=margin-top: 50px; ">
+     
+      <button type="submit" class="btn btn-primary" onclick="append()">ADD NOW</button>
+      
   </div>
   </div>   
 </div>
