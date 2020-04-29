@@ -245,3 +245,6 @@ def students(request):
 		'students':students
 	}
 	return render(request, 'main_app/students.html',context)
+
+def addStudent(request):
+	return render(request, 'main_app/forms.html')
