@@ -6,7 +6,7 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 
 
-url = 'https://ropsten.infura.io/v3/d4de0da2227146e5836fbe0d55c017c7'
+url = 'https://ropsten.infura.io/v3/<YOUR API GOES HERE>'
 web3 = Web3(Web3.HTTPProvider(url))
 
 address = web3.toChecksumAddress("0x8a7d901F07fB29721A3395727D313a9565647321")
