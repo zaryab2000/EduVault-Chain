@@ -1,0 +1,23 @@
+{% extends 'main_app/base_index.html' %}
+
+
+{% block content %}
+{% for data in records %}
+<div class="container">
+	<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{data.1}}</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="{% url 'addAttendance' data.0%}" class="btn btn-primary">Add Attendance</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,9 +1,12 @@
 {% extends 'main_app/base_index.html' %}
 
-{% block scripts %}
-<script >
 
-  const abi = [
+{% block scripts %}
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script >
+  id = "{{id}}"
+  id = parseInt(id)
+const abi = [
   {
     "constant": false,
     "inputs": [
@@ -254,13 +257,9 @@
       }
     });
   }
-function append(){
-    let name=$("#title").val();
-    let id=$("#subtitle").val();
-    let batch=$("#content").val();
-    let stream=$("#stream").val();
+function payment(){
 
-web3.eth.getAccounts(function get(err, res){     
+	web3.eth.getAccounts(function get(err, res){     
         account=res[0]
          transaction = 
         ({
@@ -271,11 +270,8 @@ web3.eth.getAccounts(function get(err, res){
 
         })
 
-      contract.newStudent.sendTransaction(
-        name,
+      contract.addAttendance.sendTransaction(
         id,
-        batch,
-        stream,
         transaction,
         (error,result)=>{
           if(error){
@@ -295,35 +291,7 @@ web3.eth.getAccounts(function get(err, res){
 {% endblock scripts %}
 
 {% block content %}
-<div class="container">
-
-  <div class="form-row">
-    <div class="form-group col-md-6" style="margin-top: 20px;">
-      <label for="inputEmail4">Student's Name</label>
-      <input id="title" name="name" class="form-control" placeholder="ADD A CATCHY TITLE HERE">
-    </div>
-  </div>
-  <div class="form-group" style="margin-top: 20px;">
-    <label for="inputAddress">Student ID</label>
-    <textarea id="subtitle" name="id" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
-  </div>
-  <div class="form-group" style="margin-top: 20px;">
-    <label for="inputAddress2">Batch</label>
-    <textarea id="content" name="batch" type="text" class="form-control" id="inputAddress2" placeholder="START WRITING YOUR BLOG" rows="2" cols="1"></textarea> 
-  </div>
-  <div class="form-group" style="margin-top: 20px;">
-    <label for="inputAddress">Stream Student</label>
-    <textarea id="stream" name="stream" type="text" class="form-control" id="inputAddress2" placeholder="ADD A SUITABLE SUBITILE" rows="2"></textarea> 
-  </div>
-  
- <div class="row col-lg-4 col-md-4 d-flex justify-content-center" style="margin-bottom: 50px; style=margin-top: 50px; ">
-     
-      <button type="submit" class="btn btn-primary" onclick="append()">ADD NOW</button>
-      
-  </div>
-  </div>   
-</div>
- 
-
+<h1 id="jj">CLICKING THIS BUTTON WILL ADD A ATTENDANCE FOR THIS STUDENT</h1>
+ <button style="font-size: 30px;" type="submit" class="btn btn-primary" onclick="payment()">Add Now</button>
 
 {% endblock %}

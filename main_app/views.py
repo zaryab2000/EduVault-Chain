@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 url = 'https://ropsten.infura.io/v3/d4de0da2227146e5836fbe0d55c017c7'
 web3 = Web3(Web3.HTTPProvider(url))
 
-address = web3.toChecksumAddress("0x8a7d901F07fB29721A3395727D313a9565647321")
+address = web3.toChecksumAddress("0xf281Cd85d5C2fC016e671d1b93a8Fcd133E2Af68")
 abi = json.loads('''[
 	{
 		"constant": false,
@@ -171,6 +171,10 @@ abi = json.loads('''[
 		"name": "studentList",
 		"outputs": [
 			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
 				"name": "name",
 				"type": "string"
 			},
@@ -224,7 +228,8 @@ abi = json.loads('''[
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	}]''')
+	}
+]''')
 	
 contract = web3.eth.contract(address=address,abi=abi)
 
@@ -232,14 +237,17 @@ def base(request):
 	
 	return render(request, 'main_app/base.html')
 
-
-def students(request):
+def get_students_records():
 	students=[]
 	count = contract.functions.getStuCount().call()
 	for s in range(count):
 		student = contract.functions.studentList(s+1).call()
 		students.append(student)
 
+	return students
+
+def students(request):
+	students=get_students_records()
 	print(students)
 	context ={
 		'students':students
@@ -248,3 +256,16 @@ def students(request):
 
 def addStudent(request):
 	return render(request, 'main_app/forms.html')
+
+def addAttendance(request,id):
+	context ={
+		'id':id
+	}
+	return render(request, 'main_app/attendance.html',context)
+
+def modify(request):
+	records = get_students_records()
+	context = {
+		'records':records
+	}
+	return render(request, 'main_app/modify.html',context)

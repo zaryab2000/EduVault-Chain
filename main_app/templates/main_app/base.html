@@ -244,6 +244,10 @@
     "name": "studentList",
     "outputs": [
       {
+        "name": "id",
+        "type": "uint256"
+      },
+      {
         "name": "name",
         "type": "string"
       },
@@ -297,9 +301,9 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function"
-  }]
-
-  const address="0x8a7d901F07fB29721A3395727D313a9565647321"
+  }
+]
+  const address="0xf281Cd85d5C2fC016e671d1b93a8Fcd133E2Af68"
 
               
             </script>
@@ -311,9 +315,9 @@
           <div class="card">
             <img class="card-img-top" src="#" alt="Card image cap">
             <div class="card-body">
-              <h3 class="card-title">READ POSTS ON BLOCKS</h3>
+              <h3 class="card-title">VIEW RECORDS</h3>
               <p class="card-text">Get access to some of the best contents all over the Internet.</p>
-              <a href="#" class="btn btn-primary">READ POSTS</a>
+              <a href="{% url 'students' %}" class="btn btn-primary">Student Records</a>
             </div>
           </div>
         </div>
@@ -330,14 +334,10 @@
             <div class="card-body">
               <h3 class="card-title">READ POSTS ON BLOCKS</h3>
               <p class="card-text">Get access to some of the best contents all over the Internet.</p>
-              <a href="#" class="btn btn-primary">READ POSTS</a>
+              <a href="{% url 'addStudent' %}" class="btn btn-primary">Add New Student</a>
             </div>
           </div>
         </div>
-        <div>
-          <h1>sjdhljsh</h1>
-        </div>
-     
       </div>
     </div>
 
