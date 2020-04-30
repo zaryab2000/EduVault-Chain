@@ -67,22 +67,21 @@
             {% endfor %}
           {% endif %}
 
-
-          {% block scripts %}
-            <script >
+{% block scripts %}
+<script >
               
-              window.addEventListener('load', ()=>{
+  window.addEventListener('load', ()=>{
 
-                if(typeof(web3)==='undefined')
-                {
-                  console.log('NO WEB3')
-                }
-                else{
-                  console.log('FOUND WEB3')
-                }
-                web3= new Web3(window.web3.currentProvider);
-                ethereum.enable();
-              });
+    if(typeof(web3)==='undefined')
+    {
+      console.log('NO WEB3')
+    }
+    else{
+      console.log('FOUND WEB3')
+    }
+    web3= new Web3(window.web3.currentProvider);
+    ethereum.enable();
+  });
             
   const abi = [
   {
@@ -304,16 +303,53 @@
 
               
             </script>
+{% endblock scripts %}
 
-          {% endblock scripts %}
-
-
-
-          {% block content %}{% endblock %}
+<div class="container" style="margin-top: 50px">
+      <div class="row d-flex justify-content-between" style="margin-top: 50px">
+        <div class="col-md-6 col-lg-4"> 
+          <div class="card">
+            <img class="card-img-top" src="#" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title">READ POSTS ON BLOCKS</h3>
+              <p class="card-text">Get access to some of the best contents all over the Internet.</p>
+              <a href="#" class="btn btn-primary">READ POSTS</a>
+            </div>
+          </div>
         </div>
-       
+        <div>
+          <h1>sjdhljsh</h1>
+        </div>
+     
+      </div>
+
+      <div class="row d-flex justify-content-between" style="margin-top: 50px">
+        <div class="col-md-6 col-lg-4"> 
+          <div class="card">
+            <img class="card-img-top" src="#" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title">READ POSTS ON BLOCKS</h3>
+              <p class="card-text">Get access to some of the best contents all over the Internet.</p>
+              <a href="#" class="btn btn-primary">READ POSTS</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>sjdhljsh</h1>
+        </div>
+     
+      </div>
+    </div>
+
+
       
       </div>
+    </div>
+</div>
+
+
+</div>             
+</div>
     </main> 
 <!-- Footer -->
 <footer class="page-footer font-small teal pt-4" style="background:DarkTurquoise; margin-top: 1000px">
