@@ -245,10 +245,17 @@ def get_students_records():
 		students.append(student)
 
 	return students
+def get_scores():
+	data = []
+	score = contract.functions.scoresList(1).call()
+	data.append(score) 
 
+	return data
 def students(request):
 	students=get_students_records()
-	print(students)
+	a=get_scores()
+	print(a)
+	# print(students)
 	context ={
 		'students':students
 	}
@@ -262,6 +269,12 @@ def addAttendance(request,id):
 		'id':id
 	}
 	return render(request, 'main_app/attendance.html',context)
+
+def addMarks(request,id):
+	context ={
+		'id':id
+	}
+	return render(request, 'main_app/addMarks.html',context)
 
 def modify(request):
 	records = get_students_records()
