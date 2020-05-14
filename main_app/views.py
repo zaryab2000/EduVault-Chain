@@ -243,7 +243,7 @@ def get_students_records():
 	for s in range(count):
 		student = contract.functions.studentList(s+1).call()
 		students.append(student)
-
+	print(students)
 	return students
 def get_scores():
 	data = []
