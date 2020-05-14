@@ -243,12 +243,13 @@ def get_students_records():
 	for s in range(count):
 		student = contract.functions.studentList(s+1).call()
 		students.append(student)
-	print(students)
 	return students
 def get_scores():
 	data = []
-	score = contract.functions.scoresList(1).call()
-	data.append(score) 
+	count = contract.functions.getStuCount().call()
+	for student in range(count):
+		score = contract.functions.scoresList(student+1).call()
+		data.append(score) 
 
 	return data
 def students(request):
@@ -282,3 +283,13 @@ def modify(request):
 		'records':records
 	}
 	return render(request, 'main_app/modify.html',context)
+
+def viewMarks(request):
+	students=get_students_records()
+	a=get_scores()
+
+	data = list(zip(students,a))
+	context ={
+		'data':data
+	}
+	return render(request, 'main_app/viewMarks.html',context)
