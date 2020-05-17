@@ -11,9 +11,9 @@
     <title>Student Managment System</title>
   </head>
   <body >
-      <nav class="navbar navbar-expand-lg navbar-dark navbar-inverse" style="background-color: #00CED1; font-size: 20px">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-inverse" style="background-color: #7FFF00; font-size: 20px">
           <div class="container-fluid">
-          <a class="navbar-brand" href="#" style=" font-size: 30px">Student Managment System </a>
+          <a class="navbar-brand" href="{% url 'base' %}" style=" font-size: 30px">Student Managment System </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,38 +21,26 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'base' %}">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'students' %}">Check Student Records<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
+                <a style="font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+                  More
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="{% url 'addStudent' %}">Add A New Student</a>
+                  <a class="dropdown-item" href="{% url 'viewMarks' %}">Check Student Scores</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="{% url 'modify' %}">Update Student's Records</a>
                 </div>
               </li>
             <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <div class="row">
-      <div class="form-inline my-2 my-lg-0">
-      <label>PUBLIC KEY: </label>{{address}}</label>
-      </div>
-    </div>
-  <!--   <div class="row">
-      <div class="form-inline my-2 my-lg-0">
-      {{balance}}
-      </div>
-    </div> -->
-    </div>
-    <br>
     
     
  </div>
@@ -332,9 +320,9 @@
           <div class="card">
             <img class="card-img-top" src="#" alt="Card image cap">
             <div class="card-body">
-              <h3 class="card-title">READ POSTS ON BLOCKS</h3>
+              <h3 class="card-title">Add New Student</h3>
               <p class="card-text">Get access to some of the best contents all over the Internet.</p>
-              <a href="{% url 'addStudent' %}" class="btn btn-primary">Add New Student</a>
+              <a href="{% url 'addStudent' %}" class="btn btn-primary">Add Now</a>
             </div>
           </div>
         </div>
