@@ -239,7 +239,7 @@ const abi = [
     }
   })
 
-  function waitForReceipt(hash, cb) {
+  function aitForReceipt(hash, cb) {
     web3.eth.getTransactionReceipt(hash, function (err, receipt) {
       if (err) {
         error(err);
@@ -291,7 +291,8 @@ function payment(){
 {% endblock scripts %}
 
 {% block content %}
-<div class="card text-center">
+<div class="container d-flex justify-content-center" style=" margin-left: 250px; margin-top: 90px; text-align: center;">
+  <div class="card text-center">
   <div class="card-header">
     Featured
   </div>
@@ -304,6 +305,8 @@ function payment(){
   <div class="card-footer text-muted">
     Attendance 
   </div>
+</div>
+
 </div>
 
 
