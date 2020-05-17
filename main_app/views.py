@@ -1,10 +1,10 @@
 import json
 from web3 import Web3
+from datetime import datetime
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
-
 
 url = 'https://ropsten.infura.io/v3/d4de0da2227146e5836fbe0d55c017c7'
 web3 = Web3(Web3.HTTPProvider(url))
@@ -253,12 +253,16 @@ def get_scores():
 
 	return data
 def students(request):
+	new_list=[]
 	students=get_students_records()
-	a=get_scores()
-	print(a)
-	# print(students)
+	for stu in students:
+		ts = int(stu[5])
+		real_time = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+		stu[5]=real_time
+		new_list.append(stu)
+	print(new_list)
 	context ={
-		'students':students
+		'students':new_list
 	}
 	return render(request, 'main_app/students.html',context)
 
