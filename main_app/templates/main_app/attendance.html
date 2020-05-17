@@ -291,7 +291,20 @@ function payment(){
 {% endblock scripts %}
 
 {% block content %}
-<h1 id="jj">CLICKING THIS BUTTON WILL ADD A ATTENDANCE FOR THIS STUDENT</h1>
- <button style="font-size: 30px;" type="submit" class="btn btn-primary" onclick="payment()">Add Now</button>
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h3 id="jj">Add Attendance</h3>
+    <p class="card-text">CLICKING THIS BUTTON WILL ADD A ATTENDANCE FOR THIS STUDENT.</p>
+     <button style="font-size: 30px;" type="submit" class="btn btn-primary" onclick="payment()">Mark Present</button>
+
+  </div>
+  <div class="card-footer text-muted">
+    Attendance 
+  </div>
+</div>
+
 
 {% endblock %}
