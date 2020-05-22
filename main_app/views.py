@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 
-url = 'https://ropsten.infura.io/v3/d4de0da2227146e5836fbe0d55c017c7'
+url = 'https://ropsten.infura.io/v3/<YOUR API-KEY>'
 web3 = Web3(Web3.HTTPProvider(url))
 
 address = web3.toChecksumAddress("0xf281Cd85d5C2fC016e671d1b93a8Fcd133E2Af68")
