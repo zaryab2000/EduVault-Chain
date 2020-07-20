@@ -3,15 +3,28 @@
 
 {% block content %}
 {% for data in records %}
+<br>
 <div class="container">
 	<div class="card text-center">
   <div class="card-header">
-    Featured
+    EduVault Chain Records
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{data.1}}</h5>
+    <div class="row d-flex justify-content-around">
+      <div>
+         <h5 class="card-title">{{data.1}}</h5>
+         <h6>Student Id: {{data.2}}</h6>
+      </div>
 
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+       <div>
+          <h6>Batch Id: {{data.3}}</h6>
+         <h6>Course:{{data.4}}</h6>
+
+      </div>
+    </div>
+   
+
+    <strong><p style="font-size: 14px" class="card-text">Only the Current Admin can add Information</p></strong>
     <div class="d-flex justify-content-around">
       <a href="{% url 'addAttendance' data.0%}" class="btn btn-primary">Add Attendance</a>
       {% if data.0 in blankScores %}
@@ -22,11 +35,9 @@
     </div>
     
   </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
 </div>
 </div>
+<br>
 {% endfor %}
 
 {% endblock %}
