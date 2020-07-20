@@ -26,11 +26,11 @@ Step 1: Go to main_app
 
 Step 2: Go to views.py
 
-Step 3: Go to Line 11 in views.py
+Step 3: Go to Line 09 in views.py
 
 url = 'https://ropsten.infura.io/v3/<PASTE YOUR API KEY HERE>'
 
-Step 3: Paste your API-KEY on Line 11
+Step 3: Paste your API-KEY on Line 09
 ```
 
 ## Author
