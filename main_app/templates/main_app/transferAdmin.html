@@ -1,0 +1,320 @@
+{% extends 'main_app/base_index.html' %}
+
+
+{% block scripts %}
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script >
+  id = "{{id}}"
+  id = parseInt(id)
+const abi = [
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "addAttendance",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_index",
+        "type": "uint256"
+      },
+      {
+        "name": "_compMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_mathMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_deMarks",
+        "type": "uint256"
+      },
+      {
+        "name": "_dsMarks",
+        "type": "uint256"
+      }
+    ],
+    "name": "addSubjectMarks",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "authorizeAdmin",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "name": "_batch",
+        "type": "string"
+      },
+      {
+        "name": "_stream",
+        "type": "string"
+      }
+    ],
+    "name": "newStudent",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAdmin",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getStuCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "scoresList",
+    "outputs": [
+      {
+        "name": "ComputerScience",
+        "type": "uint256"
+      },
+      {
+        "name": "Maths",
+        "type": "uint256"
+      },
+      {
+        "name": "DigitaElectronics",
+        "type": "uint256"
+      },
+      {
+        "name": "DataScience",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "studentList",
+    "outputs": [
+      {
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "student_id",
+        "type": "uint256"
+      },
+      {
+        "name": "batch",
+        "type": "string"
+      },
+      {
+        "name": "stream",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "uint256"
+      },
+      {
+        "name": "addedBy",
+        "type": "address"
+      },
+      {
+        "name": "attendanceCount",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "name": "ComputerScience",
+            "type": "uint256"
+          },
+          {
+            "name": "Maths",
+            "type": "uint256"
+          },
+          {
+            "name": "DigitaElectronics",
+            "type": "uint256"
+          },
+          {
+            "name": "DataScience",
+            "type": "uint256"
+          }
+        ],
+        "name": "subjects",
+        "type": "tuple"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
+
+  const address="0xf281Cd85d5C2fC016e671d1b93a8Fcd133E2Af68"
+
+  contract = web3.eth.contract(abi).at(address)
+  contract.getStuCount.call((err,res)=>{
+    if(err){
+      return console.log(err)
+    }
+    else{
+      return console.log(res.toString())
+    }
+  })
+
+  function waitForReceipt(hash, cb) {
+    web3.eth.getTransactionReceipt(hash, function (err, receipt) {
+      if (err) {
+        error(err);
+      }
+      if (receipt !== null) {
+        // Transaction went through
+        if (cb) {
+          cb(receipt);
+        }
+      } else {
+        // Try again in 1 second
+        window.setTimeout(function () {
+          waitForReceipt(hash, cb);
+        }, 1000);
+      }
+    });
+  }
+function append(){
+    let address=$("#title").val();
+    console.log(address)
+    
+web3.eth.getAccounts(function get(err, res){     
+        account=res[0]
+         transaction = 
+        ({
+          from: account,
+          "gas": 300000,
+          "chainId": 3,
+          'gasPrice': web3.toWei(4.1,'Gwei'),
+
+        })
+
+      contract.authorizeAdmin.sendTransaction(
+        address,
+        transaction,
+        (error,result)=>{
+          if(error){
+            return console.log(error)
+          }
+          else{
+            waitForReceipt(result, function(){
+              console.log(result)
+            })
+          }
+        }
+      )
+    });
+  }
+</script>
+  
+{% endblock scripts %}
+
+{% block content %}
+<div class="container d-flex justify-content-center" style=" margin-left: 250px; margin-top: 90px; text-align: center;">
+  <div class="card text-center">
+  <div class="card-header">
+    Change Admin 
+  </div>
+  <div class="card-body">
+    <h3 id="jj">Enter New Admin Address</h3>
+    
+    <div class="form-row">
+    <div class="form-group col-md-6" style="margin-top: 10px; margin-left: 130px">
+      <input id="title" name="name" class="form-control" placeholder="Enter New Address" rows="2">
+    </div>
+  </div>
+     <button style="font-size: 20px;  margin-left: 70px"; type="submit" class="btn btn-primary" onclick="append()">Change Admin</button>
+
+  </div>
+  <div class="card-footer text-muted">
+   Transfer Admin Power
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}

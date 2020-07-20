@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render,redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 
-url = 'https://ropsten.infura.io/v3/<YOUR API-KEY>'
+url = 'https://ropsten.infura.io/v3/d4de0da2227146e5836fbe0d55c017c7'
 web3 = Web3(Web3.HTTPProvider(url))
 
 
@@ -234,8 +234,8 @@ abi = json.loads('''[
 	
 contract = web3.eth.contract(address=address,abi=abi)
 
-def test(request):
-	return render(request, 'main_app/index.html')
+def transferAdmin(request):
+	return render(request, 'main_app/transferAdmin.html')
 
 def base(request):
 	
