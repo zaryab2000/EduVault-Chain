@@ -34,7 +34,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo"> </a>
+                        
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -51,26 +51,22 @@
                                     <a class="nav-link" href="about.html">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="cource.html">Courses</a>
+                                    <a class="nav-link" href="cource.html">Records</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog.html">Blog</a>
-                                </li>
+                          
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pages
-                                    </a>
+                                    <p class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        For Admin
+                                    </p>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                        <a class="dropdown-item" href="elements.html">Elements</a>
+                                        <a class="dropdown-item" href="{% url 'transferAdmin' %}">Change Admin</a>
+                                        <a class="dropdown-item" href="{% url 'modify' %}">Modify Data</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
-                                <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="#">Get a Quote</a>
-                                </li>
+                               
                             </ul>
                         </div>
                     </nav>
@@ -87,13 +83,9 @@
                 <div class="col-lg-6 col-xl-6">
                     <div class="banner_text">
                         <div class="banner_text_iner">
-                            <h5>Every child yearns to learn</h5>
-                            <h1>Making Your Childs
-                                World Better</h1>
-                            <p>Replenish seasons may male hath fruit beast were seas saw you arrie said man beast whales
-                                his void unto last session for bite. Set have great you'll male grass yielding yielding
-                                man</p>
-                            <a href="#" class="btn_1">View Course </a>
+                            <h1>EduVault Chain</h1>
+                            <h6>Decentralized Student Record management application with utmost transparency and reliability.</h6>
+                            <a href="{% url 'addStudent' %}" class="btn_1">Add a New Srudent</a>
                             <a href="#" class="btn_2">Get Started </a>
                         </div>
                     </div>
@@ -106,30 +98,30 @@
     <!-- feature_part start-->
     <section class="feature_part">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-around">
                 <div class="col-sm-6 col-xl-3 align-self-center">
                     <div class="single_feature_text ">
-                        <h2>Awesome <br> Feature</h2>
+                        <h2>Student <br> Records</h2>
                         <p>Set have great you male grass yielding an yielding first their you're
                             have called the abundantly fruit were man </p>
-                        <a href="{% url 'addStudent' %}" class="btn_1">Add A New Student</a>
+                        <a href="{% url 'students' %}" class="btn_1">View Student Records</a>
                     </div>
                 </div>
                  <div class="col-sm-6 col-xl-3 align-self-center">
                     <div class="single_feature_text ">
-                        <h2>Awesome <br> Feature</h2>
+                        <h2>Student <br> Scores</h2>
                         <p>Set have great you male grass yielding an yielding first their you're
                             have called the abundantly fruit were man </p>
-                        <a href="{% url 'viewMarks' %}" class="btn_1">Check Student Records</a>
+                        <a href="{% url 'viewMarks' %}" class="btn_1">Check Student Scores</a>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-xl-3 align-self-center">
                     <div class="single_feature_text ">
-                        <h2>Awesome <br> Feature</h2>
+                        <h2>Add New<br> Student</h2>
                         <p>Set have great you male grass yielding an yielding first their you're
                             have called the abundantly fruit were man </p>
-                        <a href="{% url 'modify' %}" class="btn_1">Modify Existing Record</a>
+                        <a href="{% url 'addStudent' %}" class="btn_1">Add Now</a>
                     </div>
                 </div>
                 
@@ -146,8 +138,7 @@
                 <div class="col-md-5 col-lg-5">
                     <div class="learning_member_text">
                         <h5>About us</h5>
-                        <h2>Learning with Love
-                            and Laughter</h2>
+                        <h2>Secured and Transparent Student Records</h2>
                         <p>Fifth saying upon divide divide rule for deep their female all hath brind Days and beast
                             greater grass signs abundantly have greater also
                             days years under brought moveth.</p>
@@ -220,9 +211,9 @@
                     <div class="single-footer-widget footer_2">
                         <h4>Contact us</h4>
                         <div class="contact_info">
-                            <p><span> Address :</span> Hath of it fly signs bear be one blessed after </p>
+                            <p><span> Address :</span> Patna, Bihar </p>
                             <p><span> Phone :</span> +2 36 265 (8060)</p>
-                            <p><span> Email : </span>info@colorlib.com </p>
+                            <p><span> Email : </span>info@eduvaultchain.com </p>
                         </div>
                     </div>
                 </div>
@@ -236,7 +227,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |<i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">EduVault_Chain</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>
