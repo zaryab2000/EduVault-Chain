@@ -233,9 +233,12 @@ abi = json.loads('''[
 	
 contract = web3.eth.contract(address=address,abi=abi)
 
+def test(request):
+	return render(request, 'main_app/index.html')
+
 def base(request):
 	
-	return render(request, 'main_app/base.html')
+	return render(request, 'main_app/index.html')
 
 def get_students_records():
 	students=[]
@@ -260,7 +263,6 @@ def students(request):
 		real_time = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 		stu[5]=real_time
 		new_list.append(stu)
-	print(new_list)
 	context ={
 		'students':new_list
 	}
@@ -282,9 +284,15 @@ def addMarks(request,id):
 	return render(request, 'main_app/addMarks.html',context)
 
 def modify(request):
+	blank_scoresID = []
 	records = get_students_records()
+	scores = get_scores()
+	for i in range(len(scores)):
+		if all(v == 0 for v in scores[i]):
+			blank_scoresID.append(i+1)
 	context = {
-		'records':records
+		'records':records,
+		'blankScores':blank_scoresID
 	}
 	return render(request, 'main_app/modify.html',context)
 

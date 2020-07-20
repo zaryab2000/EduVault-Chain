@@ -10,10 +10,15 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">{{data.1}}</h5>
+
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <div class="d-flex justify-content-around">
       <a href="{% url 'addAttendance' data.0%}" class="btn btn-primary">Add Attendance</a>
+      {% if data.0 in blankScores %}
       <a href="{% url 'addMarks' data.0%}" class="btn btn-primary">Add Marks</a>
+      {% else %}
+      <a href="#" class="btn btn-primary">Marks Already Added</a>
+      {% endif %}
     </div>
     
   </div>
